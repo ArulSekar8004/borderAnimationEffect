@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: black;
+    
+}
+.box{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background:repeating-conic-gradient(from var(--a),pink 0%,pink 5%,transparent 5%,transparent 40% ,pink 50%);
+    animation:animate 4s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@property --a {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@keyframes animate{
+    0%{
+        --a:0deg
+    }
+    100%{
+        --a:360deg
+    }
+}
+.box::before{
+    content:"" ;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--before-bg, repeating-conic-gradient(from var(--a), green 0%, green 5%, transparent 5%, transparent 40%, green 50%));
+    animation:animate 4s linear infinite;
+    animation-delay: -1s;
+    border-radius: 20px;
+  
+
+}
+.box::after{
+    content: "";
+    position:absolute;
+    inset: 8px;
+    background-color: grey;
+    border-radius: 15px;
+    border: 8px solid black;
+}
+.copyCode {
+    background: rgba(255, 255, 255, 0.3); /* Use rgba() to include opacity */
+    
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+    padding: 2px; /* Optional: Add padding for spacing inside the element */
+    margin: 5px; /* Optional: Add margin for spacing around the element */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
